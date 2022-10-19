@@ -49,7 +49,7 @@ body{
     border-bottom: 1px solid #dfdfdf;
 }
 .container .quiz .answer input{
-    margin-right: 5px;
+    margin-left: 5px;
     cursor: pointer;
 }
 .container .quiz .answer input:checked + label{
@@ -92,4 +92,16 @@ body{
 }
 .container .footer .spans-circle span.on{
     background-color: #2196f3;
+}
+.container .footer .perfect{
+    color: #2196f3;
+    font-weight: bold;
+}
+.container .footer .good{
+    color: green;
+    font-weight: bold;
+}
+.container .footer .bad{
+    color: red;
+    font-weight: bold;
 }
