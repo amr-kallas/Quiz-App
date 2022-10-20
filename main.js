@@ -24,25 +24,33 @@ let fet = fetch("question.json")
   })
 
   .then((data) => {
+    //Random Question
+
+    let keysObject = [...Array.from([...data]).keys()];
+
+    random(keysObject);
+
     let quizCount = data.length;
 
     quizNum.innerHTML = quizCount;
 
-    setdata(data[currentIndex], quizCount);
+    setdata(data[keysObject[currentIndex]], quizCount);
 
     countTimeDown(10, quizCount);
 
     button.onclick = function () {
       //Know The Correct Answer
+
       if (currentIndex < quizCount) {
-        checkAnswer(data[currentIndex].rightAnswer, quizCount);
+        checkAnswer(data[keysObject[currentIndex]].rightAnswer, quizCount);
       }
+
       currentIndex++;
 
       quizContainer.innerHTML = "";
 
       if (currentIndex != quizCount) {
-        setdata(data[currentIndex], quizCount);
+        setdata(data[keysObject[currentIndex]], quizCount);
       }
 
       handleBullet(currentIndex, quizCount);
@@ -202,4 +210,24 @@ function showResult(qcount) {
       span.innerHTML = `<span class="bad">سيء </span> واااسفاه`;
     }
   }
+}
+
+function random(Array) {
+  let target, pre;
+
+  let size = Array.length - 1;
+
+  while (size > 0) {
+    target = Array[size];
+
+    pre = Math.floor(Math.random() * size);
+
+    Array[size] = Array[pre];
+
+    Array[pre] = target;
+
+    size--;
+  }
+
+  return Array;
 }
