@@ -106,3 +106,33 @@ body{
     color: red;
     font-weight: bold;
 }
+.top-player{
+    max-width: 800px;
+    background: #eee;
+    margin: 20px auto;
+    text-align: center;
+    padding-top: 10px;
+    display: none;
+}
+.top-player h3{
+    color: #2198f6;
+    font-size: 25px;
+}
+.player{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    margin: 15px 0;
+}
+.player span{
+    margin: 0 15px;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: bold;
+}
+.player .name{
+    color: #2198f6;
+}
+.player .rigthAnswer{
+    color: #009866;
+}

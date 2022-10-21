@@ -7,14 +7,19 @@ let footer = document.querySelector(".footer");
 let timer = document.querySelector(".timer");
 let minute = document.querySelector(".min");
 let second = document.querySelector(".sec");
+let topPlayer=document.querySelector(".top-player");
 
 //option
 
 let currentIndex = 0;
-
 let correctAnswer = 0;
-
 let countDown;
+let name;
+function signIn(){
+
+  name=prompt("Enter Your Name");
+}
+signIn()
 
 //Get The Question From Json
 
@@ -209,6 +214,9 @@ function showResult(qcount) {
     } else {
       span.innerHTML = `<span class="bad">سيء </span> واااسفاه`;
     }
+
+    topPlayers()
+
   }
 }
 
@@ -230,4 +238,50 @@ function random(Array) {
   }
 
   return Array;
+}
+
+function topPlayers(){
+  let arr=[],i=0;
+
+  topPlayer.style.display="block";
+
+  localStorage.setItem(name||undefined,correctAnswer);
+
+  for(let [key,value] of Object.entries(localStorage)){
+
+    arr.push(localStorage[key]);
+
+    arr.sort().reverse()
+
+  }
+
+  for(let [key,value] of Object.entries(localStorage)){
+
+    let player=document.createElement("div");
+
+    player.className="player";
+
+    topPlayer.appendChild(player);
+
+    let PlayerName=document.createElement("span");
+
+    let test=key.charAt(0).toUpperCase()+key.slice(1,key.length);
+
+    let textName=document.createTextNode(test);
+
+    let AnswerCount=document.createElement("span");
+
+    PlayerName.className="name";
+
+    AnswerCount.className="rigthAnswer";
+
+    player.appendChild(PlayerName);
+
+    player.appendChild(AnswerCount);
+
+    PlayerName.appendChild(textName);
+
+    AnswerCount.innerHTML=value
+  }
+
 }
